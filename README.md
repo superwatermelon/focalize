@@ -2,8 +2,15 @@
 
 A functional lens framework. **WIP**.
 
-We want to be able to do something powerful such as update with
-immutability items within an array that match a predicate
+Helps with immutability, immutability is useful for retaining intermediate
+state, this means we can perform multiple activities on the same source data
+without worries that it might be modified during one of these activities.
+
+## Notes
+
+We want to be able to do something powerful such as updating (immutably, that
+is by returning an updated copy and leaving the original intact) items within
+an array that match a predicate:
 
 ```js
 const data = {
@@ -24,7 +31,7 @@ const data = {
 }
 
 const fruitLens = focalize.prop('fruit')
-const sweetFruitLens = focalize.predicateArrayLens(item => item.taste === 'Sweet')
+const sweetFruitLens = focalize.arrayFilter(item => item.taste === 'Sweet')
 const fruitNameLens = focalize.prop('name')
 const sweetFruitNameLens = fruitLens
   .andThen(sweetFruitLens)
@@ -52,6 +59,10 @@ expect(modified).toEqual({
 
 ## References
 
-Albert Steckermeier (1 July 2015). ["Lenses in Functional Programming"][1].
+- [Scalaz][scalaz]
+- [Shapeless][shapeless]
+- Albert Steckermeier (1 July 2015). ["Lenses in Functional Programming"][1].
 
+[scalaz]: https://github.com/scalaz/scalaz
+[shapeless]: https://github.com/milessabin/shapeless
 [1]: https://www21.in.tum.de/teaching/fp/SS15/papers/17.pdf
