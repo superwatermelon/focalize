@@ -4,7 +4,7 @@
   "description": "A functional lens framework for JavaScript",
   "main": "focalize.js",
   "engine": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "scripts": {
     "test": "mocha",
