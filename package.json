@@ -9,33 +9,32 @@
   "scripts": {
     "test": "mocha",
     "test:watch": "mocha --watch",
-    "docs:watch": "nodemon -x scripts/build-docs",
-    "preinstall": "echo build here"
+    "docs:watch": "nodemon -x scripts/build-docs"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/stuartwakefield/focalize.git"
   },
   "keywords": [
+    "fp",
     "frp",
+    "functional",
     "immutability",
     "immutable",
     "lens"
   ],
-  "author": "Stuart Wakefield <me@stuartwakefield.co.uk>",
+  "author": "Stuart Wakefield <stuart@superwatermelon.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stuartwakefield/focalize/issues"
+    "url": "https://github.com/superwatermelon/focalize/issues"
   },
-  "homepage": "https://github.com/stuartwakefield/focalize#readme",
+  "homepage": "https://github.com/superwatermelon/focalize#readme",
   "devDependencies": {
     "docdown": "^0.7.2",
     "expect": "^21.2.1",
     "istanbul": "^0.4.2",
     "mocha": "^2.4.5",
+    "marked": "^0.3.6",
     "mustache": "^2.3.0"
-  },
-  "dependencies": {
-    "marked": "^0.3.6"
   }
 }
