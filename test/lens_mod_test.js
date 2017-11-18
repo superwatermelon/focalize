@@ -1,8 +1,8 @@
-import focalize from '../src'
-import expect from 'expect'
+const focalize = require('../src')
+const expect = require('expect')
 
-describe('Lens#mod(s, v => v)', () => {
-  it('Modifies the value targeted by the lens', () => {
+describe('Lens#mod(s, a => b)', () => {
+  it('modifies the value targeted by the lens', () => {
 
     class Sample {
       constructor(prop) {

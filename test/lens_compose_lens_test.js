@@ -1,8 +1,8 @@
-import focalize from '../src'
-import expect from 'expect'
+const focalize = require('../src')
+const expect = require('expect')
 
-describe('Lens#andThen(other)', () => {
-  it('Performs a compose in reverse', () => {
+describe('Lens#composeLens(other)', () => {
+  it('creates a new lens that can perform deeper modification', () => {
 
     class Outer {
       constructor(inner) {
@@ -23,7 +23,7 @@ describe('Lens#andThen(other)', () => {
       s => s.inner,
       (s, v) => new Outer(v)
     )
-    const outerInnerValueLens = outerInnerLens.andThen(innerValueLens)
+    const outerInnerValueLens = innerValueLens.composeLens(outerInnerLens)
     const a = new Outer(new Inner(123))
     const b = outerInnerValueLens.set(a, 234)
 

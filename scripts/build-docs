@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+const path = require('path');
+const docdown = require('docdown');
+const marked = require('marked');
+const mustache = require('mustache');
+
+const rootDir = path.join(__dirname, '..');
+const docsDir = path.join(rootDir, 'docs');
+const source = path.join(rootDir, 'src', 'index.js');
+const template = fs.readFileSync(path.join(__dirname, 'template.mustache'), 'utf8');
+const repo = 'https://github.com/stuartwakefield/focalize/blob/master/src/index.js'
+
+const markdown = docdown({
+  path: source,
+  url: repo,
+  title: 'API',
+  toc: 'properties'
+});
+const html = mustache.render(template, {
+  docs: marked(markdown),
+  year: new Date().getUTCFullYear()
+});
+
+if (!fs.existsSync(docsDir)) {
+  fs.mkdirSync(docsDir);
+}
+
+fs.writeFileSync(path.join(docsDir, 'index.md'), markdown);
+fs.writeFileSync(path.join(docsDir, 'index.html'), html);

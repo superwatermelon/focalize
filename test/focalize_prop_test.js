@@ -1,10 +1,10 @@
-import focalize from '../src'
-import expect from 'expect'
+const focalize = require('../src')
+const expect = require('expect')
 
-describe('focalize.objectPropertyLens(name)', () => {
-  it('Creates a lens for a generic object literal property', () => {
+describe('focalize.prop(name)', () => {
+  it('creates a lens for a generic object literal property', () => {
 
-    const lens = focalize.objectPropertyLens('name')
+    const lens = focalize.prop('name')
     const a = {
       name: 'Barney',
       age: 20
