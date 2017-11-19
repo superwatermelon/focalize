@@ -1,6 +1,6 @@
 {
   "name": "focalize",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A functional lens framework for JavaScript",
   "main": "src",
   "engine": {
