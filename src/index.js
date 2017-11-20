@@ -45,26 +45,59 @@ Lens.prototype.get = function(target) {
  * @memberOf Lens
  * @param {*} target the target
  * @param {*} value the value
- * @returns {*} the value
+ * @returns {*} the updated target
  * @example
  *
- * const lens = focalize.prop('a')
+ * const lens = focalize.prop('a');
  *
- * lens.set({ a: 1 }, 2)
+ * lens.set({ a: 1 }, 2);
  * // => { a: 2 }
  */
 Lens.prototype.set = function(target, value) {
   return Lens.set(this.getter, this.setter, target, value);
 };
 
+/**
+ * Modifies the value on the target
+ *
+ * @memberOf Lens
+ * @param {*} target the target
+ * @param {Function} fn the modification function
+ * @returns {*} the updated target
+ * @example
+ *
+ * const lens = focalize.prop('a');
+ *
+ * lens.mod({ a: 1 }, v => v + 2);
+ * // => { a: 3 }
+ */
 Lens.prototype.mod = function(target, fn) {
   return Lens.mod(this.getter, this.setter, target, fn);
 };
 
+/* UNSTABLE - may change in the future */
 Lens.prototype.push = function(target, ...source) {
   return Lens.push(this.getter, this.setter, target, ...source);
 };
 
+/**
+ * Composes the lens with another lens and returns the resulting
+ * composed lens.
+ *
+ * @memberOf Lens
+ * @param {Lens} other the other lens
+ * @returns {Lens} the composed lens
+ * @see Lens#scope(other)
+ * @example
+ *
+ * const lens = focalize.prop('b')
+ *   .composeLens(
+ *     focalize.prop('a')
+ *   );
+ *
+ * lens.get({ a: { b: 'c' } });
+ * // => 'c'
+ */
 Lens.prototype.composeLens = function(other) {
   return Lens.compose(this, other);
 };
@@ -107,7 +140,7 @@ Lens.prototype.composeTraversal = function(other) {
  *
  * const traversal = focalize.prop('name').asTraversal();
  *
- * traversal.getAll({ name: 'Bob' })
+ * traversal.getAll({ name: 'Bob' });
  * // => ['Bob']
  */
 Lens.prototype.asTraversal = function() {
@@ -125,9 +158,9 @@ Lens.prototype.asTraversal = function() {
  * @example
  *
  * const lens = focalize.prop('a')
- *   .scope(focalize.prop('b'))
+ *   .scope(focalize.prop('b'));
  *
- * traversal.get({ a: { b: 'c' } })
+ * lens.get({ a: { b: 'c' } });
  * // => 'c'
  */
 Lens.prototype.scope = function(other) {
