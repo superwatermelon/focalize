@@ -1,8 +1,8 @@
 {
   "name": "focalize",
-  "version": "0.2.1",
+  "version": "0.2.3",
   "description": "A functional lens framework for JavaScript",
-  "main": "focalize.js",
+  "main": "src",
   "engine": {
     "node": ">=6.0.0"
   },
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/stuartwakefield/focalize.git"
+    "url": "https://github.com/superwatermelon/focalize.git"
   },
   "keywords": [
     "fp",
